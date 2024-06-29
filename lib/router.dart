@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mai_practice/components/test_data/test_news.dart';
 import 'package:mai_practice/features/auth/view/auth_screen.dart';
 import 'package:mai_practice/features/home/view/home_screen.dart';
 import 'package:mai_practice/features/messager/view/messager_screen.dart';
 import 'package:mai_practice/features/my_team/view/my_team_screen.dart';
 import 'package:mai_practice/features/news/view/news_screen.dart';
+import 'package:mai_practice/features/news/view/post_screen.dart';
 import 'package:mai_practice/features/notifications/view/notifications_screen.dart';
 import 'package:mai_practice/features/profile/view/profile_screen.dart';
 import 'package:mai_practice/features/project_passport/view/project_passport_screen.dart';
@@ -53,6 +55,17 @@ final GoRouter router = GoRouter(
           pageBuilder: (context, state) {
             return const NoTransitionPage(
               child: NewsScreen()
+            );
+          },
+        ),
+        GoRoute(
+          path: '/news/:id',
+          parentNavigatorKey: _shellNavigatorKey,
+          pageBuilder: (context, state) {
+            return NoTransitionPage(
+              child: PostScreen(
+                postId: state.pathParameters["id"]!.substring(1),
+              )
             );
           },
         ),

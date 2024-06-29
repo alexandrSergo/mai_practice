@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:mai_practice/components/constants.dart';
 import 'package:mai_practice/components/window_properies.dart';
 import 'package:mai_practice/features/auth/widgets/auth_box.dart';

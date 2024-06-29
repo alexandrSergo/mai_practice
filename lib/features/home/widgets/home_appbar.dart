@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mai_practice/components/constants.dart';
 
 class HomeAppBar extends StatefulWidget {
-  const HomeAppBar({super.key});
+  const HomeAppBar({super.key, required this.onLogoTap});
+  final VoidCallback onLogoTap;
 
   @override
   State<HomeAppBar> createState() => _HomeAppBarState();
@@ -14,10 +14,6 @@ class HomeAppBar extends StatefulWidget {
 class _HomeAppBarState extends State<HomeAppBar> {
 
   final _typeSpace = const SizedBox(width: 30,);
-
-  void _onLabelTap() {
-    context.go("/profile");
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +26,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
       child: Row(
         children: [
           GestureDetector(
-            onTap: _onLabelTap,
+            onTap: widget.onLogoTap,
             child: Image.asset('assets/images/mai.png')
           ),
           const Spacer(),

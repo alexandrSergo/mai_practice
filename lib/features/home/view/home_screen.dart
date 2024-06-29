@@ -65,13 +65,22 @@ class _HomeScreenState extends State<HomeScreen> {
     router.go(location);
   }
 
+  void _onLogoTap() {
+    setState(() {
+      _currentIndex = -1;
+    });
+    context.go("/profile");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBackground,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(height*0.09), 
-        child: const HomeAppBar()
+        child: HomeAppBar(
+          onLogoTap: _onLogoTap,
+        )
       ),
       body: Row(
         children: [
