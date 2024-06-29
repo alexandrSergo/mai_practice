@@ -1,7 +1,5 @@
-import 'dart:js_util';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mai_practice/components/constants.dart';
 import 'package:mai_practice/components/window_properies.dart';
@@ -75,10 +73,6 @@ class _HomeScreenState extends State<HomeScreen> {
         preferredSize: Size.fromHeight(height*0.09), 
         child: const HomeAppBar()
       ),
-      // appBar: AppBar(
-      //   leading: Image.asset('assets/images/mai.png'),
-      //   backgroundColor: kBackground,
-      // ),
       body: Row(
         children: [
           Container(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mai_practice/features/auth/view/auth_screen.dart';
 import 'package:mai_practice/features/home/view/home_screen.dart';
 import 'package:mai_practice/features/messager/view/messager_screen.dart';
 import 'package:mai_practice/features/my_team/view/my_team_screen.dart';
@@ -10,13 +11,22 @@ import 'package:mai_practice/features/project_passport/view/project_passport_scr
 import 'package:mai_practice/features/search_team/view/search_team_screen.dart';
 import 'package:mai_practice/features/support/view/support_screen.dart';
 
-final _rootNavigatorKey = GlobalKey<NavigatorState>();
+final rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 final GoRouter router = GoRouter(
-  navigatorKey: _rootNavigatorKey,
+  navigatorKey: rootNavigatorKey,
   initialLocation: '/',
   routes: [
+    GoRoute(
+      path: '/',
+      parentNavigatorKey: rootNavigatorKey,
+      pageBuilder: (context, state) {
+        return const NoTransitionPage(
+          child: AuthScreen()
+        );
+      },
+    ),
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
       pageBuilder: (context, state, child) {
@@ -29,7 +39,7 @@ final GoRouter router = GoRouter(
       },
       routes: [
         GoRoute(
-          path: '/',
+          path: '/profile',
           parentNavigatorKey: _shellNavigatorKey,
           pageBuilder: (context, state) {
             return const NoTransitionPage(

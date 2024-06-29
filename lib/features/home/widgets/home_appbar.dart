@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mai_practice/components/constants.dart';
 
 class HomeAppBar extends StatefulWidget {
@@ -13,6 +15,10 @@ class _HomeAppBarState extends State<HomeAppBar> {
 
   final _typeSpace = const SizedBox(width: 30,);
 
+  void _onLabelTap() {
+    context.go("/profile");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,7 +29,10 @@ class _HomeAppBarState extends State<HomeAppBar> {
       ),
       child: Row(
         children: [
-          Image.asset('assets/images/mai.png'),
+          GestureDetector(
+            onTap: _onLabelTap,
+            child: Image.asset('assets/images/mai.png')
+          ),
           const Spacer(),
           SvgPicture.asset("assets/icons/notify.svg"),
           _typeSpace,
