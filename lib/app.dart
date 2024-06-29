@@ -16,6 +16,9 @@ class MainApp extends StatelessWidget {
         textTheme: Theme.of(context).textTheme.apply(
           bodyColor: kWhite,
           displayColor: kWhite
+        ),
+        cardTheme: const CardTheme(
+          elevation: 0
         )
       ),
       debugShowCheckedModeBanner: false,
