@@ -50,22 +50,38 @@ class _MessagerScreenState extends State<MessagerScreen> {
     });
   }
 
-  void _onSearch() {
+  void _onSearch(String v) {
     setState(() {
-      if (searched) {
-        searched = false;
-        searchedChats = null;
-        _searchController.clear();
-      } else {
-        searchedChats = _chats.where(
-          (element) => element.members.firstWhere(
-            (element) => element!=user
-          ).getFio.toLowerCase().contains(
-            _searchController.text.trim().toLowerCase()
-          )
-        ).toList();
-        searched = true;
-      }
+      searched = true;
+      searchedChats = _chats.where(
+        (element) => element.members.firstWhere(
+          (element) => element!=user
+        ).getFio.toLowerCase().contains(
+          v.trim().toLowerCase()
+        )
+      ).toList();
+      // if (searched) {
+      //   searched = false;
+      //   searchedChats = null;
+      //   _searchController.clear();
+      // } else {
+      //   searchedChats = _chats.where(
+      //     (element) => element.members.firstWhere(
+      //       (element) => element!=user
+      //     ).getFio.toLowerCase().contains(
+      //       v.trim().toLowerCase()
+      //     )
+      //   ).toList();
+      //   searched = true;
+      // }
+    });
+  }
+
+  void _onClearSearch() {
+    setState(() {
+      searched = false;
+      _searchController.clear();
+      searchedChats = null;
     });
   }
 
@@ -115,11 +131,15 @@ class _MessagerScreenState extends State<MessagerScreen> {
                                   borderSide: BorderSide.none,
                                 ),
                               ),
+                              onChanged: _onSearch,
+                              onEditingComplete: () {
+                                _onSearch(_searchController.text);
+                              },
                             ),
                           ),
                           const Spacer(),
                           GestureDetector(
-                            onTap: _onSearch,
+                            onTap: _onClearSearch,
                             child: Icon(!searched ? Icons.keyboard_arrow_down : Icons.close, color: kWhite, size: 20,)
                           )
                         ],
