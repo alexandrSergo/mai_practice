@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mai_practice/components/test_data/test_news.dart';
 import 'package:mai_practice/features/auth/view/auth_screen.dart';
 import 'package:mai_practice/features/home/view/home_screen.dart';
 import 'package:mai_practice/features/messager/view/messager_screen.dart';
